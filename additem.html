@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- Alec Shallenberger-->
-<!-- Project 1-->
+<!-- Project 2-->
 <!-- Term 1304-->
-<!-- April 9,2013-->
+<!-- April 17,2013-->
 
 <html>
 	<head>
@@ -16,17 +16,19 @@
     	<meta name="viewport" content="user-scalable=yes, width=device-width" />
     </head>
 	<body>
-    	<h1>Holiday Food Checklist</h1>
+        <h1>Holiday Food Checklist</h1>
         <nav>
         	<a href="#" id="clear">Clear Stored Data</a>
             <a href="#" id="displayLink">Display Data</a>
         </nav>
         <form action="#" method="post">
-        	<fieldset>
+        	<fieldset id="holidaychecklist">
             	<legend>Information</legend>
-                	<label for="Holiday">Holiday Checklist:</label>
+                <ul id="errors"></ul>
+                <ul id="questions">	
+                    <label for="Holiday">Holiday Checklist:</label>
                        <ul>
-                        <select id="Holiday">
+                        <li id="select"><label for="group">Add a Holiday:</label><br /></li>
                             	<option value="Christmas">Christmas</option>
                             	<option value="Thanksgiving">Thankgiving</option>
                             	<option value="Easter">Easter</option>
@@ -59,6 +61,7 @@
             	</fieldset>
             <input type="submit" value="Save Checklist"/>
         </form>
+    	<script src="js/main.js" type="text/javascript"></script>
     </body>
 </html>
                    
