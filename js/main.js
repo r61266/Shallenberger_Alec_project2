@@ -5,7 +5,7 @@
 // VfW Project2
 
 window.addEventListener("DOMContentLoaded", function(){
-	
+		
 	
 	function $(x){
 		var theElement = document.getElementById(x);
@@ -27,14 +27,93 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect); 	
 	}
 	
+	/*function getCheckboxValue(){
+		var checkbox = document.getElementbyId('select');
+		for(var i=0; checkbox[i]; i++){
+			if(checkbox[i].checked){
+					sideValue = checkbox[i].value;
+				}
+			}
+		}
+*/
+	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				$('checklistForm').style.display = "none";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "none";
+				$('addNew').style.display = "inline";
+				break;
+			case "off":
+				$('checklsitForm').style.display = "block";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "inline";
+				$('addNew').style.display = "none";
+				$('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}	
+	}
+	
+	
+	function storeData(){
+		var id				= Math.floor(Math.random()*14685325);
+		/*getCheckboxValue();*/
+		var item			= {};
+			item.holigroup	= ["Holiday:", $('holiday').value];
+			item.app		= ["Appitzer:", $('app').value];
+			item.mname		= ["Main Meal:", $('mname').value];
+	/*		
+			item.side		= ["Sides Dishes:", sideValue];
+	*/
+			item.date		= ["Date:", $('date').value];
+			item.amofpeople	= ["Amount of People:", $('amofpeople').value];
+			item.notes		= ["Notes:", $('notes').value];
+		localStorage.setItem(id, JSON.stringify(item));
+		alert("Checklist Saved!");
+	}
+	
+	function getData(){
+		toggleControls("on");
+		
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		$('items').style.displau = "block";
+		for(var i=0, len=localStorage.length; i<len; i++){
+			var makeli = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeli.appendChild(makeSubList);
+			for(var k in obj){
+				var makeSubli = document.createElement('li');
+				makeSubList.appendChild(makeSubli);
+				var optSubText = obj[k][0]+" "+obj[k][1];
+				makeSubli.innerHTML = optSubText;
+			}
+		}
+	}
+	
+	
+	//Variable defualts
 	var specHoliday = ["--Choose a Holiday--", "Christmas", "Thanksgiving", "Easter", "Hanukkah", "New Years", "St. Patricks", "Fourth of July"];
+		/*sideValue;*/
+	
+	
 	makeSpec();
 	
 	
 	var displayLink = $('displayLink');
 	displayLink.addEventListener("click", getData);
-	var clearLink = $('clear');
-	clearLink.addEventListener("click", clearLocal);
+	//var clearLink = $('clear');
+	//clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 	
