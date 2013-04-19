@@ -26,17 +26,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		selectLi.appendChild(makeSelect); 	
 	}
-	
-	/*function getCheckboxValue(){
-		var checkbox = document.getElementbyId('select');
-		for(var i=0; checkbox[i]; i++){
-			if(checkbox[i].checked){
-					sideValue = checkbox[i].value;
-				}
+
+	var checkboxes = document.getElementById("checklistForm").dishes;
+	var sideValue = function(){
+		for(i=0, j=checkboxes.length; i<j; i++){
+			if(checkboxes[i].checked){
+				console.log(checkboxes[i].value);
 			}
 		}
-*/
+	};
 	
+				
 	function toggleControls(n){
 		switch(n){
 			case "on":
@@ -60,14 +60,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function storeData(){
 		var id				= Math.floor(Math.random()*14685325);
-		/*getCheckboxValue();*/
+		sideValue();
 		var item			= {};
 			item.holigroup	= ["Holiday:", $('holiday').value];
 			item.app		= ["Appitzer:", $('app').value];
-			item.mname		= ["Main Meal:", $('mname').value];
-	/*		
+			item.mname		= ["Main Meal:", $('mname').value];	
 			item.side		= ["Sides Dishes:", sideValue];
-	*/
 			item.date		= ["Date:", $('date').value];
 			item.amofpeople	= ["Amount of People:", $('amofpeople').value];
 			item.notes		= ["Notes:", $('notes').value];
@@ -77,6 +75,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function getData(){
 		toggleControls("on");
+		if(localStorage.length === 0){
+			alert("There is no data in Local Storage.");
+		}
 		
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
@@ -101,10 +102,21 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("There is no data to clear.")
+		}else{
+			localStorage.clear();
+			alert("All checklists are deleted!");
+			window.location.reload();
+			return false;
+		}	
+	}
+	
 	
 	//Variable defualts
 	var specHoliday = ["--Choose a Holiday--", "Christmas", "Thanksgiving", "Easter", "Hanukkah", "New Years", "St. Patricks", "Fourth of July"];
-		/*sideValue;*/
+		
 	
 	
 	makeSpec();
@@ -112,32 +124,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	var displayLink = $('displayLink');
 	displayLink.addEventListener("click", getData);
-	//var clearLink = $('clear');
-	//clearLink.addEventListener("click", clearLocal);
+	var clearLink = $('clear');
+	clearLink.addEventListener("click", clearLocal);
 	var save = $('submit');
 	save.addEventListener("click", storeData);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 });
