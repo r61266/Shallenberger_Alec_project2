@@ -14,15 +14,16 @@
     	<meta name="HandheldFriendly" content="True" />
     	<meta name="MobileOptimized" content="320" />
     	<meta name="viewport" content="user-scalable=yes, width=device-width" />
+        <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
     </head>
 	<body>
-        <h1>Holiday Food Checklist</h1>
+        <h1>Holiday Checklist</h1>
         <nav>
         	<a href="#" id="clear">Clear Stored Data</a>
             <a href="#" id="displayLink">Display Data</a>
             <a href="additem.html" id="addNew" style="display:none;">Add New Checklist</a>
         </nav>
-        <form action="#" method="post"id="checklistForm">
+        <form action="#" method="post" id="checklistForm">
         	<fieldset id="holidaychecklist">
             	<legend>Information</legend>
                 <ul id="errors"></ul>
@@ -55,11 +56,11 @@
                         	<li><input type="checkbox" value="Casserole" id="casserole" name="dishes" /><label for="casserole">Casserole</label></li>
                         	<li><input type="checkbox" value="Mashed Potatoes" id="mashedpotatoes" name="dishes" /><label for="mashedpotatoes">Mashed    			                                 Potatoes</label></li>
                      	</ul>
- 						<ul>                  
+ 						                  
                    			<li><label for="date">Date Updated:</label><input type="date" id="date"/></li>
                    			<li><label for="amofpeople">Amount of People</label><input type="range" min="0" max="30" id="amofpeople"/></li>
                    			<li><label for="notes">Additional Notes:</label><textarea id="notes"></textarea></li>
-                        </ul>
+                        
             	</fieldset>
             <input type="button" value="Save Checklist" id="submit" /><br />
         </form>
