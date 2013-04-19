@@ -2,7 +2,7 @@
 // Alec Shallenberger
 // April 17, 2013
 // Term 1304
-// VfW Project2
+// VFW Project2
 
 window.addEventListener("DOMContentLoaded", function(){
 		
